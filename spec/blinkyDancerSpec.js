@@ -32,3 +32,41 @@ describe('blinkyDancer', function() {
     });
   });
 });
+
+describe('fadeDancer', function() {
+  var fadeDancer, clock;
+  var timeBetweenSteps = 100;
+
+  beforeEach(function() {
+    clock = sinon.useFakeTimers();
+    fadeDancer = new FadeDancer(10, 20, timeBetweenSteps);
+  });
+
+  it('should have a fadeIn function that makes it fade in', function () {
+    sinon.spy(fadeDancer.$node, 'fadeIn');
+    fadeDancer.step();
+    expect(fadeDancer.$node.fadeIn.called).to.be.true;   
+  });
+  
+  it('should have a fadeOut function that makes it fade out', function () {
+    sinon.spy(fadeDancer.$node, 'fadeOut');
+    fadeDancer.step();
+    expect(fadeDancer.$node.fadeOut.called).to.be.true;   
+  });
+});
+
+describe('growDancer', function() {
+  var growDancer, clock;
+  var timeBetweenSteps = 100;
+
+  beforeEach(function() {
+    clock = sinon.useFakeTimers();
+    growDancer = new GrowDancer(10, 20, timeBetweenSteps);
+  });
+
+  it('should have a grow function that makes its node grow', function (){
+    sinon.spy(growDancer.$node, 'animate');
+    growDancer.step();
+    expect(growDancer.$node.animate.called).to.be.true;   
+  });
+});
