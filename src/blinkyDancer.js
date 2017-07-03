@@ -20,17 +20,17 @@
 
 //pseudo
 
-var MakeBlinkyDancer = function(top, left, timeBetweenSteps) {
-  MakeDancer.call(this, top, left, timeBetweenSteps);
-  this.oldStep = MakeDancer.prototype.step.call(this, timeBetweenSteps);
-  
+var BlinkyDancer = function(top, left, timeBetweenSteps) {
+  Dancer.call(this, top, left, timeBetweenSteps);
+  //this.timeBetweenSteps = timeBetweenSteps;
 };
 
-MakeBlinkyDancer.prototype = Object.create(MakeDancer.prototype);
-MakeBlinkyDancer.prototype.constructor = MakeBlinkyDancer;
+BlinkyDancer.prototype = Object.create(Dancer.prototype);
+BlinkyDancer.prototype.constructor = BlinkyDancer;
 
-MakeBlinkyDancer.prototype.step = function (timeBetweenSteps) {
-  this.oldStep.call(this, timeBetweenSteps); // currently broken
+BlinkyDancer.prototype.step = function () {
+
+  Dancer.prototype.step.call(this, this.timeBetweenSteps);
 
   this.$node.toggle();
 };
