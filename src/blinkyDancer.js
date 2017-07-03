@@ -39,3 +39,46 @@ BlinkyDancer.prototype.step = function () {
 //   console.log('stepped');
 //   setTimeout(this.step, timeBetweenSteps);
 // }; 
+
+var FadeDancer = function(top, left, timeBetweenSteps){
+  Dancer.call(this, top, left, timeBetweenSteps);
+};
+
+FadeDancer.prototype = Object.create(Dancer.prototype);
+FadeDancer.prototype.constructor = FadeDancer;
+
+FadeDancer.prototype.step = function(){
+  Dancer.prototype.step.call(this, this.timeBetweenSteps);
+  
+  var colors = ['yellow', 'red', 'blue', 'violet', 'black', 'green'];
+  var randomColorNumber = Math.floor(Math.random() * 3);
+  
+  
+  
+  // this.$node.fadeIn();
+  this.$node.fadeIn().fadeOut(this.timeBetweenSteps).css('border-color', colors[randomColorNumber]);
+  
+};
+
+var GrowDancer = function(top, left, timeBetweenSteps){
+  Dancer.call(this, top, left, timeBetweenSteps);
+};
+
+GrowDancer.prototype = Object.create(Dancer.prototype);
+GrowDancer.prototype.constructor = GrowDancer;
+
+GrowDancer.prototype.step = function(){
+  Dancer.prototype.step.call(this, this.timeBetweenSteps);
+  
+  
+  
+  // this.$node.fadeIn();
+  this.$node.css('border-color', 'aquamarine').animate({
+    borderRadius: '50px',
+    borderWidth: '50px'//['50px', 'solid', 'aquamarine']
+  });
+  this.$node.animate({
+    borderRadius: '10px',
+    borderWidth: '10px'//['50px', 'solid', 'aquamarine']
+  });
+};
