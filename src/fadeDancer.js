@@ -11,9 +11,6 @@ FadeDancer.prototype.step = function() {
   var colors = ['yellow', 'red', 'blue', 'violet', 'black', 'green'];
   var randomColorNumber = Math.floor(Math.random() * 3);
   
-  
-  
-  // this.$node.fadeIn();
   this.$node.fadeIn().fadeOut(this.timeBetweenSteps).css('border-color', colors[randomColorNumber]);
   
 };

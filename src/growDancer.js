@@ -10,13 +10,14 @@ GrowDancer.prototype.step = function() {
   
   
   
-  // this.$node.fadeIn();
+  this.$node.addClass('stopThis');
+  
   this.$node.css('border-color', 'aquamarine').animate({
     borderRadius: '50px',
-    borderWidth: '50px'//['50px', 'solid', 'aquamarine']
+    borderWidth: '50px'
   });
   this.$node.animate({
     borderRadius: '10px',
-    borderWidth: '10px'//['50px', 'solid', 'aquamarine']
+    borderWidth: '10px'
   });
 };
